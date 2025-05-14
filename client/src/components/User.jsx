@@ -7,19 +7,19 @@ const User = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/users/")
+    axios.get("https://crud-3cdd.onrender.com")
       .then(result => {
         setUsers(result.data);
-        // console.log(result.data);
+        console.log(result.data);
       })
       .catch(err => console.log(err));
   }, []);
 
   const handleDelete = (id) => {
-  axios.delete(`http://localhost:3000/api/users/deleteUser/${id}`)
+  axios.delete(`https://crud-3cdd.onrender.com/deleteUser/${id}`)
     .then(result => {
       console.log(result.data);
-      setUsers(users.filter(user => user._id !== id)); 
+      setUsers(users.filter(user => user._id !== id)); // remove from UI
     })
     .catch(err => console.log(err));
 };
