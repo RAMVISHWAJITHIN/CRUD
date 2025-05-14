@@ -1,17 +1,14 @@
+require('dotenv').config()
 const express=require('express')
 const mongoose=require('mongoose')
 const UserRoute=require('./routes/user.routes')
 const cors=require('cors')
 const app=express();
 
-mongoose.connect('mongodb+srv://usernameoffline404:jpv2Qk1CzZpYcYgZ@cluster0.k5ow8xi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('Connected to DB!'));
 
-app.use(cors({
-  origin: 'https://crud-wheat-one.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 app.use("/api/users",UserRoute)
 
