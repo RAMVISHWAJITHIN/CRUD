@@ -7,16 +7,16 @@ const User = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/users/")
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}`)
       .then(result => {
         setUsers(result.data);
-        console.log(result.data);
+        // console.log(result.data);
       })
       .catch(err => console.log(err));
   }, []);
 
   const handleDelete = (id) => {
-  axios.delete(`http://localhost:3000/api/users/deleteUser/${id}`)
+  axios.delete(`${import.meta.env.VITE_BACKEND_URL}/deleteUser/${id}`)
     .then(result => {
       console.log(result.data);
       setUsers(users.filter(user => user._id !== id)); // remove from UI
