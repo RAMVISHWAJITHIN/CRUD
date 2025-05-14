@@ -8,7 +8,12 @@ const app=express();
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('Connected to DB!'));
 
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://crud-s8uy.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 app.use("/api/users",UserRoute)
 
