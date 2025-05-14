@@ -7,7 +7,7 @@ const User = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("https://crud-3cdd.onrender.com")
+    axios.get("http://localhost:3000/api/users/")
       .then(result => {
         setUsers(result.data);
         console.log(result.data);
@@ -16,7 +16,7 @@ const User = () => {
   }, []);
 
   const handleDelete = (id) => {
-  axios.delete(`https://crud-3cdd.onrender.com/deleteUser/${id}`)
+  axios.delete(`http://localhost:3000/api/users/deleteUser/${id}`)
     .then(result => {
       console.log(result.data);
       setUsers(users.filter(user => user._id !== id)); // remove from UI

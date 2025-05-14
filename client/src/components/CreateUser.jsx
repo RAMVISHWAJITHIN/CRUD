@@ -11,7 +11,7 @@ const CreateUser = () => {
 
   const Submit = (e) => {
     e.preventDefault();
-    axios.post("https://crud-3cdd.onrender.com/createUser", { name, email, age })
+    axios.post("http://localhost:3000/api/users/createUser", { name, email, age })
       .then(result => {
         console.log(result);
         navigate("/");

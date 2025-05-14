@@ -11,7 +11,7 @@ const navigate=useNavigate();
 const {id}=useParams();
  
  useEffect(() => {
-    axios.get("https://crud-3cdd.onrender.com/getUser/"+id)
+    axios.get("http://localhost:3000/api/users/getUser/"+id)
       .then(result => {
         setName(result.data.name)
         setEmail(result.data.email)
@@ -24,7 +24,7 @@ const {id}=useParams();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    axios.put("https://crud-3cdd.onrender.com/updateUser/"+id, { name, email, age })
+    axios.put("http://localhost:3000/api/users/updateUser/"+id, { name, email, age })
       .then(result => {
         console.log(result);
         navigate("/");
