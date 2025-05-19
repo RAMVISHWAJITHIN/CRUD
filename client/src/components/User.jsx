@@ -18,7 +18,7 @@ const User = () => {
   const handleDelete = (id) => {
   axios.delete(`${import.meta.env.VITE_BACKEND_URL}/deleteUser/${id}`)
     .then(result => {
-      console.log(result.data);
+      // console.log(result.data);
       setUsers(users.filter(user => user._id !== id)); // remove from UI
     })
     .catch(err => console.log(err));
